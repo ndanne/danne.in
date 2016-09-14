@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+ </head>
+ <body>
+ <div>
+	 <div style="margin:100px;">		
+			<label for="intsrt">Please enter the string</label>
+			<input type="text" name="intsrt" id="instrt" require>
+			<input type="submit" name="Submit" onclick="return enValidate()" value="Encode">
+	
+	<p>The file encoded string is: <span id='finalStr'></span></p>
+	 </div>
+
+ </div>
+<script type="text/javascript">
+// ADP test for generating unique code
+	
+	function enValidate(){
+		var inputstr = document.getElementById('instrt').value;
+		console.log(inputstr);
+		if(inputstr == null || inputstr == ""){
+		 	alert("Please enter your name");
+			return false; 
+		} else if(inputstr.length > 0) {
+			if(!inputstr.match(/[a-z]+$/)){
+				alert("Pleae enter only string a-z and only lowercase to encode");  
+				 document.getElementById('inputstr').focus();
+ 				return false;
+			}
+		}
+		//return true;
+		encodeFn(inputstr)
+	}
+	function encodeFn(inputstr) {
+		var inputstr = inputstr.toUpperCase(); //toString()
+		var encodStr = inputstr[0];
+		var encod 	= inputstr.substr(1);
+		var encodArr = encod.split('');
+		
+		
+	console.log(encodArr);
+	for(var i=0; i < encodArr.length; i++){
+		//A, E, I, O, U //agaraju /N162
+			if(encodArr[i] == 'A' || encodArr[i] == 'I' || encodArr[i] == 'E' || encodArr[i] == 'U'){
+					encodStr += '1'; console.log(encodArr[i]);					
+			}
+			else if(encodArr[i] == 'B' || encodArr[i] == 'F' || encodArr[i] == 'G') {
+				encodStr += '2';					
+			}
+			else if(encodArr[i] == 'K' || encodArr[i] == 'D' || encodArr[i] == 'S' ||  encodArr[i] == 'J') {
+				encodStr += '7'; console.log(encodArr[i]);
+			}
+			else if(encodArr[i] == 'H' || encodArr[i] == 'P' || encodArr[i] == 'T'){
+				encodStr += '3'; //console.log(encodArr[i]);
+			}
+			else if(encodArr[i] == 'L'){
+				encodStr += '4';  //console.log(encodArr[i]);
+			}
+			else if(encodArr[i] == 'M' || encodArr[i] == 'N'){
+				encodStr += '5'; //console.log(encodArr[i]);
+			}
+			else if(encodArr[i] == 'R'){
+				encodStr += '6'; console.log(encodArr[i]);
+			}
+	}
+		//encodStr = encodStr + encodStr0 + encodStr1 + encodStr2 + encodStr3 + encodStr4 + encodStr5 + encodStr6;
+		var uniqueList=encodStr.split('').filter(function(values,index,arr){
+		    return index==arr.indexOf(values);
+		}).join('');
+
+		uniqueList = uniqueList.substr(0, 6);
+	
+		if(uniqueList.length == 5){
+			uniqueList = uniqueList + '0'
+		} else if(uniqueList.length == 4) {
+			uniqueList = uniqueList + '00'
+		} else if(uniqueList.length == 3) {
+			uniqueList = uniqueList + '000'
+		} else if(uniqueList.length == 2) {
+			uniqueList = uniqueList + '0000'
+		} 
+			document.getElementById("finalStr").innerHTML = uniqueList;
+}	
+
+</script>
+ </body>
+ </html>   
