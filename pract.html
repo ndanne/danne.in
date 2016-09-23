@@ -81,6 +81,17 @@
 		    return a;
 		}*/
 
+/*
+var oldString = "P112221500";
+var filtered = oldString.replace(/(.)(?=.*\1)/g, ""); 
+output -> P2150 --> require -->P1250
+
+***************
+var oldString = "P11112122500";
+var filtered = oldString.replace(/[^\w\s]|(.)(?=\1)/gi, ""); //with space
+var filtered = oldString.replace(/[^\w]|(.)(?=\1)/gi, ""); //with out space
+output -> P121250 --> second seniro of strings 
+*/
 
 		uniqueList = uniqueList.substr(0, 6);
 	
