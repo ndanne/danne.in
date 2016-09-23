@@ -70,6 +70,17 @@
 		var uniqueList=encodStr.split('').filter(function(values,index,arr){
 		    return index==arr.indexOf(values);
 		}).join('');
+		
+		//The below code will remove the duplicateds for an array
+	/*	Array.prototype.unique = function() {
+		    var a = [];
+		    for ( i = 0; i < this.length; i++ ) {
+		        var current = this[i];
+		        if (a.indexOf(current) < 0) a.push(current);
+		    }
+		    return a;
+		}*/
+
 
 		uniqueList = uniqueList.substr(0, 6);
 	
